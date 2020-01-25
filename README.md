@@ -15,7 +15,7 @@ number of active users, errors tracking...)
 ```js
 const express = require('express');
 const app = express();
-const trackRequests = require('..');
+const trackRequests = require('track-requests');
 const trackRequestsOptions = {
   elasticSearchOptions: {
     elasticSearchUrl: 'http://127.0.0.1:9200/'
