@@ -1,0 +1,28 @@
+version: '2.0'
+
+services:
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - "dataE:/usr/share/elasticsearch/data"
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.3.2
+    container_name: kibana
+    ports:
+      - 5601:5601
+    depends_on:
+      - elastic
+    environment:
+      - ELASTICSEARCH_URL=http://elastic:9200
+    volumes:
+      - "dataK:/usr/share/kibana/data"
+
+volumes:
+  dataE:
+  dataK:

@@ -1,0 +1,33 @@
+{
+  "name": "track-requests",
+  "description": "HTTP requests monitors middleware for node.js",
+  "version": "1.0.0",
+  "author": {
+    "name": "omar ghorbel",
+    "email": "omar.ghorbel.tn@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "express",
+    "http",
+    "monitoring",
+    "middleware",
+    "kibana"
+  ],
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "5.10.0"
+  },
+  "files": [
+    "LICENSE",
+    "HISTORY.md",
+    "README.md",
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint ."
+  }
+}
