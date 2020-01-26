@@ -1,15 +1,15 @@
 {
   "name": "track-requests",
   "description": "HTTP requests monitors middleware for node.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "omar ghorbel",
     "email": "omar.ghorbel.tn@gmail.com"
   },
   "homepage": "https://github.com/omargho/track-requests",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/omargho/track-requests"
+    "type": "git",
+    "url": "https://github.com/omargho/track-requests"
   },
   "bugs": {
     "url": "https://github.com/omargho/track-requests/issues"
@@ -27,7 +27,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "eslint": "5.10.0"
+    "eslint": "5.10.0",
+    "express": "^4.17.1",
+    "mocha": "^7.0.1"
   },
   "files": [
     "LICENSE",
@@ -37,6 +39,7 @@
     "lib"
   ],
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "mocha test/*.js  --exit"
   }
 }

@@ -1,4 +1,4 @@
-# Track-Requests
+# Track-Requests [![NPM Version][npm-version-image]][npm-url]
 
 HTTP request tracker middleware for node.js
 
@@ -21,5 +21,11 @@ const trackRequestsOptions = {
     elasticSearchUrl: 'http://127.0.0.1:9200/'
   }
 };
-app.use(trackRequests(trackRequestsOptions));;
+app.use(trackRequests(trackRequestsOptions));
 ```
+
+
+[MIT](LICENSE)
+
+[npm-url]: https://www.npmjs.com/package/track-requests
+[npm-version-image]: https://badgen.net/npm/v/track-requests
