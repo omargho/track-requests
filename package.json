@@ -29,7 +29,8 @@
     "babel-eslint": "^10.0.3",
     "eslint": "5.10.0",
     "express": "^4.17.1",
-    "mocha": "^7.0.1"
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0"
   },
   "files": [
     "LICENSE",
@@ -40,6 +41,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha test/*.js  --exit"
+    "test": "mocha test/*.js  --exit",
+    "coverage": "nyc npm run test"
   }
 }
