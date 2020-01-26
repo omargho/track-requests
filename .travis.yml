@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "8"
+services:
+  - elasticsearch
+#small delay to make sure that Elasticsearch is available
+before_script:
+  - sleep 10
