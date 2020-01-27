@@ -1,4 +1,4 @@
-# Track-Requests [![NPM Version][npm-version-image]][npm-url] [![Build Status](https://travis-ci.com/omargho/track-requests.svg?branch=master)](https://travis-ci.com/omargho/track-requests)
+# Track-Requests [![NPM Version][npm-version-image]][npm-url] [![Build Status](https://travis-ci.com/omargho/track-requests.svg?branch=master)](https://travis-ci.com/omargho/track-requests) [![Coverage Status](https://coveralls.io/repos/github/omargho/track-requests/badge.svg?branch=master)](https://coveralls.io/github/omargho/track-requests?branch=master)
 
 HTTP request tracker middleware for node.js
 
