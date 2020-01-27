@@ -1,4 +1,4 @@
-# Track-Requests [![NPM Version][npm-version-image]][npm-url]
+# Track-Requests [![NPM Version][npm-version-image]][npm-url] [![Build Status](https://travis-ci.com/omargho/track-requests.svg?branch=master)](https://travis-ci.com/omargho/track-requests)
 
 HTTP request tracker middleware for node.js
 
