@@ -41,7 +41,6 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "mocha test/*.js  --exit",
-    "coverage": "nyc npm run test"
+    "test": "nyc mocha test/*.js  --exit"
   }
 }
