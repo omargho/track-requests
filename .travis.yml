@@ -6,3 +6,6 @@ services:
 #small delay to make sure that Elasticsearch is available
 before_script:
   - sleep 10
+after_script:
+  - npm install coveralls
+  - nyc npm test && nyc report --reporter=text-lcov | coveralls
