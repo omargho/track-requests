@@ -152,6 +152,13 @@ describe('esClient custom index properties', () => {
     done();
   });
 
+  it('healthCheck', (done) => {
+    esClient.healthCheck().then(body => {
+      assert.equal(body.tagline, 'You Know, for Search');
+      done();
+    }).catch(done);
+  });
+
   it('setMapping', (done) => {
     esClient.setMapping().then(done).catch(done);
   });
