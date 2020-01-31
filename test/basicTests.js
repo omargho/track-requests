@@ -9,7 +9,7 @@ describe('Basic tests', () => {
   const options = {
     elasticSearchOptions: {
       elasticSearchUrl: 'http://127.0.0.1:9200/',
-      indexName: 'test-tracking'
+      indexName: 'test0-tracking'
     }
   };
 
@@ -31,7 +31,7 @@ describe('Basic tests', () => {
 
   serverFactory.createSever(3000, [trackerRequests(options)],
     [
-      {method: 'get', endpoint: '/', controller: (req, res) => setTimeout(() => res.send('Hakuna Matata'), 100)}
+      {method: 'get', endpoint: '/', controller: (req, res) => res.send('Hakuna Matata')}
     ]);
 
   it('check if server started correctly', (done) => {
