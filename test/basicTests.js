@@ -22,7 +22,7 @@ describe('Basic tests', () => {
   });
 
   after(done => {
-    let {elasticSearchUrl, indexName} = options;
+    let {elasticSearchUrl, indexName} = options.elasticSearchOptions;
     //delete ES data
     request.delete(elasticSearchUrl + indexName, () => {
       done();
@@ -31,7 +31,7 @@ describe('Basic tests', () => {
 
   serverFactory.createSever(3000, [trackerRequests(options)],
     [
-      {method: 'get', endpoint: '/', controller: (req, res) => res.send('Hakuna Matata')}
+      {method: 'get', endpoint: '/', controller: (req, res) => setTimeout(() => res.send('Hakuna Matata'), 100)}
     ]);
 
   it('check if server started correctly', (done) => {
