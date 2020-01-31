@@ -8,11 +8,20 @@ const assert = require('assert');
 describe('Basic tests', () => {
   const options = {
     elasticSearchOptions: {
-      elasticSearchUrl: 'http://127.0.0.1:9200/'
+      elasticSearchUrl: 'http://127.0.0.1:9200/',
+      indexName: 'test-tracking'
     }
   };
 
-  const app = serverFactory.createSever(3000, [trackerRequests(options)],
+  before(done => {
+    let {elasticSearchUrl, indexName} = options.elasticSearchOptions;
+    //delete ES data
+    request.delete(elasticSearchUrl + indexName, () => {
+      done();
+    });
+  });
+
+  serverFactory.createSever(3000, [trackerRequests(options)],
     [
       {method: 'get', endpoint: '/', controller: (req, res) => res.send('Hakuna Matata')}
     ]);
