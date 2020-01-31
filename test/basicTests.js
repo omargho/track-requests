@@ -21,6 +21,14 @@ describe('Basic tests', () => {
     });
   });
 
+  after(done => {
+    let {elasticSearchUrl, indexName} = options;
+    //delete ES data
+    request.delete(elasticSearchUrl + indexName, () => {
+      done();
+    });
+  });
+
   serverFactory.createSever(3000, [trackerRequests(options)],
     [
       {method: 'get', endpoint: '/', controller: (req, res) => res.send('Hakuna Matata')}
