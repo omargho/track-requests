@@ -9,7 +9,8 @@ describe('tracker basic Tests', () => {
     elasticSearchOptions: {
       elasticSearchUrl: 'http://127.0.0.1:9200/',
       indexName: 'test-tracking'
-    }
+    },
+    routesToIgnore: [/user/, '/organization/member', {url: '/healthcheck', method: 'GET'}, {regex: /search/, method: 'POST', statusCode: 404}]
   };
   const tracker = new Tracker(options);
 
@@ -78,6 +79,63 @@ describe('tracker basic Tests', () => {
 
     done();
   });
+
+  it('shouldIgnoreRoutes should match regex', (done) => {
+    let req = {url: '/test/user', method: 'POST', headers: {}};
+    let res = {statusCode: 201};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(result);
+    done();
+  });
+
+  it('shouldIgnoreRoutes should not match', (done) => {
+    let req = {url: '/organization/members', method: 'POST', headers: {}};
+    let res = {statusCode: 201};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(!result);
+    done();
+  });
+
+  it('shouldIgnoreRoutes should match string', (done) => {
+    let req = {url: '/organization/member', method: 'POST', headers: {}};
+    let res = {statusCode: 201};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(result);
+    done();
+  });
+
+  it('shouldIgnoreRoutes should not match object', (done) => {
+    let req = {url: '/healthcheck', method: 'POST', headers: {}};
+    let res = {statusCode: 201};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(!result);
+    done();
+  });
+
+  it('shouldIgnoreRoutes should match object', (done) => {
+    let req = {url: '/healthcheck', method: 'GET', headers: {}};
+    let res = {statusCode: 201};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(result);
+    done();
+  });
+
+  it('shouldIgnoreRoutes should not match object with regex', (done) => {
+    let req = {url: '/search', method: 'POST', headers: {}};
+    let res = {statusCode: 401};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(!result);
+    done();
+  });
+
+  it('shouldIgnoreRoutes should match object with regex', (done) => {
+    let req = {url: '/search', method: 'POST', headers: {}};
+    let res = {statusCode: 404};
+    let result = tracker.shouldIgnoreRoutes(req, res);
+    assert(result);
+    done();
+  });
+
 });
 
 describe('tracker custom Getters Tests', () => {
