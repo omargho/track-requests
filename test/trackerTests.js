@@ -31,6 +31,9 @@ describe('tracker basic Tests', () => {
       error: null,
       body: null
     };
+    assert(expectedDoc.processingTime < 5);
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
     assert.deepEqual(expectedDoc, doc);
 
     done();
@@ -53,7 +56,10 @@ describe('tracker basic Tests', () => {
       body: req.body,
       error: null
     };
-    assert.deepEqual(doc, expectedDoc);
+    assert(expectedDoc.processingTime < 5);
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
+    assert.deepEqual(expectedDoc, doc);
 
     done();
   });
@@ -75,6 +81,9 @@ describe('tracker basic Tests', () => {
       body: req.body,
       error: req.error
     };
+    assert(expectedDoc.processingTime < 5);
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
     assert.deepEqual(expectedDoc, doc);
 
     done();
@@ -181,6 +190,9 @@ describe('tracker custom Getters Tests', () => {
       params: undefined,
       hello: 'hello balbaz'
     };
+    assert(expectedDoc.processingTime < 5);
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
     assert.deepEqual(expectedDoc, doc);
 
     done();
@@ -211,6 +223,9 @@ describe('tracker custom Getters Tests', () => {
       params: req.params,
       hello: 'hello sankou7'
     };
+    assert(expectedDoc.processingTime < 5);
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
     assert.deepEqual(expectedDoc, doc);
 
     done();
@@ -241,6 +256,9 @@ describe('tracker custom Getters Tests', () => {
       params: req.params,
       hello: 'hello sankou7'
     };
+    assert(expectedDoc.processingTime < 5);
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
     assert.deepEqual(expectedDoc, doc);
 
     done();

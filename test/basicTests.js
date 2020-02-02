@@ -9,7 +9,7 @@ describe('Basic tests', () => {
   const options = {
     elasticSearchOptions: {
       elasticSearchUrl: 'http://127.0.0.1:9200/',
-      indexName: 'test0-tracking'
+      indexName: 'test-tracking'
     }
   };
 
@@ -25,7 +25,7 @@ describe('Basic tests', () => {
     let {elasticSearchUrl, indexName} = options.elasticSearchOptions;
     //delete ES data
     request.delete(elasticSearchUrl + indexName, () => {
-      done();
+      setTimeout(done, 300);
     });
   });
 
