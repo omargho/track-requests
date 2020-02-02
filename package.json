@@ -1,7 +1,7 @@
 {
   "name": "track-requests",
   "description": "HTTP requests monitors middleware for node.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "omar ghorbel",
     "email": "omar.ghorbel.tn@gmail.com"
