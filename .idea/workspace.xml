@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c4e7fac4-1ffd-44af-bd36-c401e7f4fda0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/example/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tracker.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tracker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/trackerTests.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/trackerTests.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +31,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -46,7 +53,10 @@
       <workItem from="1585076522998" duration="2500000" />
       <workItem from="1585091830184" duration="18036000" />
       <workItem from="1585222184104" duration="3706000" />
-      <workItem from="1585229665727" duration="692000" />
+      <workItem from="1585229665727" duration="2318000" />
+      <workItem from="1585531417984" duration="792000" />
+      <workItem from="1585612745767" duration="15441000" />
+      <workItem from="1585666409974" duration="414000" />
     </task>
     <servers />
   </component>
@@ -58,6 +68,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="779" y="297" width="424" height="482" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1585120538756" />
+    <state x="485" y="174" key="SettingsEditor" timestamp="1585623069804">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="485" y="174" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1585623069804" />
     <state x="630" y="233" width="1028" height="610" key="find.popup" timestamp="1585122151791">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
