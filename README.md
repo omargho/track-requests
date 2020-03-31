@@ -124,6 +124,34 @@ let options = {
 };
 ``` 
 
+### `options.endpointsBodies`
+`Array`- array of `Object` of the endpoints for which you want the tracker to change the body and the changes required.
+  
+- `String`|`Regex`|`Object` endpoint:
+    - `String` it should match the exact endpoint's url 
+    - `Regex`  it should verify the endpoint's url 
+    - `Object` all the parameters should matches 
+        - url `String` it should match the exact endpoint
+        - regex `Regex` it should verify the endpoint
+        - statusCode `Number` it should match the HTTP response's Status Code
+        - method `String` it should match the HTTP request's method
+- `Object`- body:
+    - `Boolean`- it indicates the action to keep or delete properties in the body of the defined endpoint
+        - true: keep the defined properties
+        - false: delete the defined properties 
+    - `Array`- array of `String` defining the properties to keep or delete
+
+Usage example: 
+```js
+let options = {
+  endpointsBodies:[
+    {endpoint : /user/, body : {keep: true, properties: ['name']}},//only keep the defined body properties of all the endpoints that verify this regex 
+    {endpoint : '/organization/member', body : {keep: true, properties: ['lorem','ipsum']}},//only keep the defined body properties of this exact all the endpoint
+    {endpoint : {url: '/healthcheck', method: 'GET'}, body : {keep: false, properties: ['roo','kies']}},// only delete the defined body properties of the GET requests to this exact endpoint    
+  ]
+};
+``` 
+
 ### `options.elasticSearchOptions`
 `Object`- Contains the parameters used to customise the elasticSearch client
 

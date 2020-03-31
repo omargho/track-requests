@@ -10,7 +10,15 @@ describe('tracker basic Tests', () => {
       elasticSearchUrl: 'http://127.0.0.1:9200/',
       indexName: 'test-tracking'
     },
-    routesToIgnore: [/user/, '/organization/member', {url: '/healthcheck', method: 'GET'}, {regex: /search/, method: 'POST', statusCode: 404}]
+    routesToIgnore: [/user/, '/organization/member', {url: '/healthcheck', method: 'GET'}, {
+      regex: /search/,
+      method: 'POST',
+      statusCode: 404
+    }],
+    endpointsBodies: [
+      {endpoint: {url: '/true', method: 'GET'}, body: {keep: true, properties: ['name', 'lagra3']}},
+      {endpoint: '/false', body: {keep: false, properties: ['name', 'bouja']}}
+    ]
   };
   const tracker = new Tracker(options);
 
@@ -40,7 +48,12 @@ describe('tracker basic Tests', () => {
   });
 
   it('generateTrackingDoc POST request example', (done) => {
-    let req = {url: '/test', method: 'POST', body: {name: 'fartas'}, headers: {'user-agent': 'scraper', 'x-real-ip': '127.0.0.1'}};
+    let req = {
+      url: '/test',
+      method: 'POST',
+      body: {name: 'fartas'},
+      headers: {'user-agent': 'scraper', 'x-real-ip': '127.0.0.1'}
+    };
     let res = {statusCode: 200};
     let startTime = Date.now();
     let doc = tracker.generateTrackingDoc(req, res, startTime);
@@ -65,7 +78,13 @@ describe('tracker basic Tests', () => {
   });
 
   it('generateTrackingDoc err request example', (done) => {
-    let req = {url: '/test', method: 'POST', body: {name: 'fartas'}, headers: {'user-agent': 'scraper', 'x-real-ip': '127.0.0.1'}, error: 'internal error'};
+    let req = {
+      url: '/test',
+      method: 'POST',
+      body: {name: 'fartas'},
+      headers: {'user-agent': 'scraper', 'x-real-ip': '127.0.0.1'},
+      error: 'internal error'
+    };
     let res = {statusCode: 500};
     let startTime = Date.now();
     let doc = tracker.generateTrackingDoc(req, res, startTime);
@@ -145,6 +164,61 @@ describe('tracker basic Tests', () => {
     done();
   });
 
+  it('verifyBody should keep element from body', (done) => {
+    let req = {url: '/true', method: 'GET', body: {name: 'fartas', job: '7ajjem'}, headers: {}};
+    let res = {statusCode: 500};
+    let startTime = Date.now();
+    let doc = tracker.generateTrackingDoc(req, res, startTime);
+    doc.body = tracker.verifyBody(req, res, doc.body);
+    let expectedDoc = {
+      url: req.url,
+      method: req.method,
+      user: 'anonymous',
+      ip: req.headers['x-real-ip'],
+      statusCode: res.statusCode,
+      processingTime: 0,
+      createdAt: startTime,
+      userAgent: req.headers['user-agent'],
+      body: {
+        name: 'fartas',
+        lagra3: null
+      },
+      error: req.error
+    };
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
+    assert.deepEqual(expectedDoc, doc);
+
+    done();
+  });
+
+  it('verifyBody should delete element from body', (done) => {
+    let req = {url: '/false', method: 'GET', body: {name: 'fartas', job: '7ajjem'}, headers: {}};
+    let res = {statusCode: 500};
+    let startTime = Date.now();
+    let doc = tracker.generateTrackingDoc(req, res, startTime);
+    doc.body = tracker.verifyBody(req, res, doc.body);
+    let expectedDoc = {
+      url: req.url,
+      method: req.method,
+      user: 'anonymous',
+      ip: req.headers['x-real-ip'],
+      statusCode: res.statusCode,
+      processingTime: 0,
+      createdAt: startTime,
+      userAgent: req.headers['user-agent'],
+      body: {
+        job: '7ajjem'
+      },
+      error: req.error
+    };
+    expectedDoc.createdAt = doc.createdAt;
+    expectedDoc.processingTime = doc.processingTime;
+    assert.deepEqual(expectedDoc, doc);
+
+    done();
+  });
+
 });
 
 describe('tracker custom Getters Tests', () => {
@@ -171,7 +245,13 @@ describe('tracker custom Getters Tests', () => {
   const tracker = new Tracker(options);
 
   it('generateTrackingDoc GET request example', (done) => {
-    let req = {url: '/test', method: 'GET', ip: '8.8.8.8', user: {id: 'balbaz'}, headers: {'user-agent': 'scraper', 'x-real-ip': '127.0.0.1'}};
+    let req = {
+      url: '/test',
+      method: 'GET',
+      ip: '8.8.8.8',
+      user: {id: 'balbaz'},
+      headers: {'user-agent': 'scraper', 'x-real-ip': '127.0.0.1'}
+    };
     let res = {statusCode: 200};
     let startTime = Date.now();
     let doc = tracker.generateTrackingDoc(req, res, startTime);
